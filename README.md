@@ -1,10 +1,12 @@
 <div align="center">
 
-# UAP Verdict Foundry
+<img width="171" height="73" alt="image" src="https://github.com/user-attachments/assets/19582643-f140-4654-b4c0-9a701a1cb134" />
 
 **Forensic verdicts for unexplained aerial footage: tested against mundane explanations, never sensationalised.**
 
-A one-operator service. A photo or video comes in, and a defensible three-state verdict goes out. The verdict comes with evidence citations, source stamps, calibrated uncertainty and a hash-chained audit log. **No output of this system asserts extraterrestrial origin.** Templated verdict text and an export linter enforce that mechanically.
+A one-operator service. A photo or video comes in, and a defensible three-state verdict goes out. The verdict comes with evidence citations, source stamps, calibrated uncertainty and a hash-chained audit log. **No output of this system asserts extraterrestrial origin. Even if it is.** Templated verdict text and an export linter enforce that mechanically. 
+
+The operator's seed made this an `sdk` product. A running Sneferu engine sits behind it, and the product uses it for multi-model judging instead of reimplementing any of that. UAPVF talks to the engine over HTTP using the SDK's wire contract. Sneferu Instances will be availible soon. 
 
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-%2B%20React%2019%20console-009688?logo=fastapi&logoColor=white)
