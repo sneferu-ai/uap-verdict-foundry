@@ -1,0 +1,13 @@
+{
+ "behavior_notes": "Benchmark seed fixture.",
+ "count": 1,
+ "duration_seconds": 30,
+ "latitude": 40.0,
+ "location_text": "Northern California site",
+ "longitude": -120.0,
+ "observed_at": "2026-01-15T20:30:00+00:00",
+ "shape": "light",
+ "terms_accepted": true,
+ "viewing_direction": "180,45",
+ "weather": "clear"
+}

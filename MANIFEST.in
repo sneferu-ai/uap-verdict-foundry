@@ -1,0 +1,21 @@
+include README.md
+include pyproject.toml
+include .env.example
+include requirements.lock
+include packaging.json
+include test_plan.md
+recursive-include src/uapvf *.py
+recursive-include src/uapvf/defaults *.yaml *.json *.txt
+recursive-include src/uapvf/ui_dist *
+# Product configuration templates shipped with the package. Runtime state
+# (var/uapvf.db, var/cases/, var/benchmark/calibration.json) is created by
+# `uapvf db init` and normal operation; it is never shipped pre-built.
+include var/battery_config.yaml
+include var/quality_config.json
+include var/fiction_prompt_template.txt
+include var/fiction_constraints.json
+include var/mock_fixtures.json
+include var/benchmark/prereg.json
+recursive-include var/benchmark/seed *.json *.jpg *.sqlite
+recursive-include tests *.py *.json *.jpg
+global-exclude __pycache__/* *.pyc .DS_Store

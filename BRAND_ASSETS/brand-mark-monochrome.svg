@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Verdict Foundry monochrome mark">
+  <path d="M-12 70H62c30 0 36 18 55 42l19 24M68-12v50c0 29 19 41 42 60l28 23M145 132c22 1 31 15 46 35l77 101" fill="none" stroke="#111111" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="140" cy="128" r="43" fill="#FFFFFF" stroke="#111111" stroke-width="8"/>
+  <path d="M105 111h70l-24 42h-22z" fill="#111111"/>
+  <circle cx="140" cy="128" r="10" fill="#FFFFFF"/>
+  <path d="M23 202h69" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="111" cy="202" r="7" fill="#111111"/>
+</svg>

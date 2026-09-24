@@ -1,0 +1,32 @@
+name: production-gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - name: Install OS isolation and video tools
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap ffmpeg
+      - name: Install product and test dependencies
+        run: python -m pip install -e '.[test,live]' build
+      - name: Verify backend
+        run: python -m pytest tests -q
+      - name: Verify and build operator console
+        working-directory: ui
+        run: npm ci && npm test -- --run && npm run lint && npm run build
+      - name: Freeze console into installable package
+        run: scripts/sync-ui-dist.sh
+      - name: Verify distributions
+        run: python -m build

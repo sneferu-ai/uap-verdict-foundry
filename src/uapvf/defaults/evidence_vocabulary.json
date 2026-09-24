@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "description": "Normative machine-readable evidence vocabulary for the seven UAP lineages (spec section 3.2): 14 shared evidence-observation claims + 20 lineage-specific claims with allowed emitters. Array order is the normative claim numbering (#1-#14 shared, #1-#20 specific within each lineage block). Structural contradiction pairs are listed here; claim-classification inconsistency rules and defense resolutions live in refutation_rules.json. Audit note: the spec §3.2 per-lineage count line reads 'l1: ... = 8', but the normative allowed-emitters table gives l1 exactly four shared claims (#1, #2, #3, #6); this file follows the normative table, and 4 >= 3 satisfies the claim contract.",
+  "required_shared_claims": 3,
+  "required_specific_claims": 2,
+  "shared_claims": [
+    {"claim_id": "point_source", "number": 1, "description": "Object appears as an unresolved point of light.", "allowed_emitters": ["l1-photometric", "l3-geometric", "l6-resnet50"]},
+    {"claim_id": "extended_source", "number": 2, "description": "Object has resolvable spatial extent.", "allowed_emitters": ["l1-photometric", "l2-spectral", "l3-geometric", "l6-resnet50"]},
+    {"claim_id": "luminous", "number": 3, "description": "Object emits or reflects significant light.", "allowed_emitters": ["l1-photometric", "l2-spectral", "l6-resnet50"]},
+    {"claim_id": "motion_detected", "number": 4, "description": "Object shows apparent motion.", "allowed_emitters": ["l3-geometric", "l5-trajectory", "l7-audio"]},
+    {"claim_id": "periodic_behavior", "number": 5, "description": "Periodic pattern in visual/audio signal.", "allowed_emitters": ["l3-geometric", "l5-trajectory", "l7-audio"]},
+    {"claim_id": "anomalous_signature", "number": 6, "description": "Measurement doesn't match common materials.", "allowed_emitters": ["l1-photometric", "l2-spectral", "l4-metadata", "l6-resnet50"]},
+    {"claim_id": "sharp_boundary", "number": 7, "description": "Well-defined edges.", "allowed_emitters": ["l3-geometric", "l6-resnet50"]},
+    {"claim_id": "diffuse_boundary", "number": 8, "description": "Blurred or unclear edges.", "allowed_emitters": ["l3-geometric", "l6-resnet50"]},
+    {"claim_id": "symmetric_form", "number": 9, "description": "Object appears symmetric.", "allowed_emitters": ["l3-geometric", "l6-resnet50"]},
+    {"claim_id": "metadata_anomaly", "number": 10, "description": "Metadata inconsistency or anomaly.", "allowed_emitters": ["l4-metadata"]},
+    {"claim_id": "asymmetric_form", "number": 11, "description": "Object appears asymmetric.", "allowed_emitters": ["l3-geometric", "l6-resnet50"]},
+    {"claim_id": "temporal_consistency", "number": 12, "description": "Observed pattern shows temporal consistency over the analysis window (metadata timestamps, motion patterns, or audio patterns).", "allowed_emitters": ["l4-metadata", "l5-trajectory", "l7-audio"]},
+    {"claim_id": "velocity_profile", "number": 13, "description": "Motion characteristics show an identifiable velocity profile (motion dynamics or Doppler-like audio shifts).", "allowed_emitters": ["l5-trajectory", "l7-audio"]},
+    {"claim_id": "frequency_signature", "number": 14, "description": "Distinctive frequency-domain signature detected (spectral analysis or audio spectrogram).", "allowed_emitters": ["l2-spectral", "l7-audio"]}
+  ],
+  "specific_claims": [
+    {"claim_id": "luminance_profile_consistent_with_known_object", "number": 1, "lineage": "l1-photometric", "description": "Luminance profile matches patterns of known object classes."},
+    {"claim_id": "luminance_gradient_anomalous", "number": 2, "lineage": "l1-photometric", "description": "Luminance gradient does not match common materials."},
+    {"claim_id": "high_luminance_ratio", "number": 3, "lineage": "l1-photometric", "description": "Object luminance ratio is high relative to scene."},
+    {"claim_id": "spectral_peak_detected", "number": 1, "lineage": "l2-spectral", "description": "Distinct spectral peak detected in frequency analysis."},
+    {"claim_id": "spectral_entropy_anomalous", "number": 2, "lineage": "l2-spectral", "description": "Spectral entropy deviates from expected natural-scene distribution."},
+    {"claim_id": "frequency_harmonic_pattern", "number": 3, "lineage": "l2-spectral", "description": "Harmonic frequency pattern detected."},
+    {"claim_id": "geometric_contour_matched", "number": 1, "lineage": "l3-geometric", "description": "Object contour matches known geometric templates."},
+    {"claim_id": "perspective_consistent_with_range", "number": 2, "lineage": "l3-geometric", "description": "Perspective cues are consistent with an estimated range."},
+    {"claim_id": "shape_symmetry_detected", "number": 3, "lineage": "l3-geometric", "description": "Quantitative shape symmetry detected."},
+    {"claim_id": "exif_device_identified", "number": 1, "lineage": "l4-metadata", "description": "EXIF identifies the capture device."},
+    {"claim_id": "timestamp_metadata_consistent", "number": 2, "lineage": "l4-metadata", "description": "File and EXIF timestamps are mutually consistent."},
+    {"claim_id": "file_structure_anomaly", "number": 3, "lineage": "l4-metadata", "description": "File container structure shows an anomaly (stripped EXIF, rewritten container)."},
+    {"claim_id": "ballistic_trajectory_detected", "number": 1, "lineage": "l5-trajectory", "description": "Motion fits a ballistic trajectory under physical constraints."},
+    {"claim_id": "hover_behavior_detected", "number": 2, "lineage": "l5-trajectory", "description": "Object holds position (hover) against wind/physics expectations."},
+    {"claim_id": "steady_trajectory_detected", "number": 3, "lineage": "l5-trajectory", "description": "Steady, powered, level trajectory detected."},
+    {"claim_id": "cnn_classification_confident", "number": 1, "lineage": "l6-resnet50", "description": "CNN classifier confidence exceeds the taxonomy mapping threshold."},
+    {"claim_id": "cnn_feature_pattern_matched", "number": 2, "lineage": "l6-resnet50", "description": "CNN feature pattern matched a mapped ImageNet class cluster."},
+    {"claim_id": "audio_spectral_signature_detected", "number": 1, "lineage": "l7-audio", "description": "Audio spectrogram shows a distinctive spectral signature."},
+    {"claim_id": "audio_rotor_signature_detected", "number": 2, "lineage": "l7-audio", "description": "Periodic rotor-like oscillation detected in audio."},
+    {"claim_id": "audio_environmental_match", "number": 3, "lineage": "l7-audio", "description": "Audio matches environmental (traffic, machinery, nature) profiles."}
+  ],
+  "structural_contradictions": [
+    {"claim_a": "point_source", "claim_b": "extended_source", "reason": "object cannot be both unresolved and spatially extended"},
+    {"claim_a": "sharp_boundary", "claim_b": "diffuse_boundary", "reason": "object cannot have both sharp and diffuse edges"},
+    {"claim_a": "symmetric_form", "claim_b": "asymmetric_form", "reason": "object cannot be both symmetric and asymmetric"}
+  ]
+}

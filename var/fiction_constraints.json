@@ -1,0 +1,18 @@
+{
+  "max_tokens": 2000,
+  "temperature": 0.7,
+  "min_paragraphs": 3,
+  "min_paragraph_chars": 40,
+  "max_file_bytes": 10240,
+  "must_not_assert": [
+    "extraterrestrial origin",
+    "non-human intelligence",
+    "off-world",
+    "alien origin"
+  ],
+  "labelling": {
+    "prefix": "[SPECULATIVE FICTION — NOT FORENSIC EVIDENCE] ",
+    "banner": "=== SPECULATIVE FICTION — NOT FORENSIC EVIDENCE — DO NOT CITE AS EVIDENCE ===",
+    "front_matter_statement": "This document is derived fiction. It is not a forensic record and must not be cited as evidence."
+  }
+}

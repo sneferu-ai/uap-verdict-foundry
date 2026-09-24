@@ -1,0 +1,64 @@
+{
+  "product": "uapvf",
+  "version": "0.1.0",
+  "packaging_schema": "packaging_v1",
+  "runtime": {
+    "python": ">=3.9 (verified on 3.9.6; 3.11+ recommended by spec but not required by code)",
+    "system_tools": ["ffmpeg", "ffprobe"],
+    "system_tools_required_for": ["video intake probe/normalization", "video quality gate"]
+  },
+  "install": {
+    "steps": [
+      "python3 -m venv .venv && source .venv/bin/activate",
+      "python3 -m pip install -r requirements.lock",
+      "python3 -m pip install -e .",
+      "cd ui && npm ci && npm run build && cd .. && scripts/sync-ui-dist.sh",
+      "cp .env.example .env  # then set UAPV_OPERATOR_TOKEN"
+    ],
+    "live_mode_extra": "python3 -m pip install -e .[live]"
+  },
+  "initialize": {
+    "command": "uapvf db init",
+    "creates": ["var/uapvf.db", "var/cases/", "var/benchmark/", "var/backup/"]
+  },
+  "run": {
+    "server": "uapvf serve",
+    "server_dev": "uapvf serve --dev",
+    "default_bind": "http://127.0.0.1:8470",
+    "worker_threads": 4,
+    "notes": "The server process hosts the background worker pool; no separate worker process is required."
+  },
+  "runtime_test": {
+    "command": "UAPV_OPERATOR_TOKEN=test-token SNEFERU_MOCK=1 uapvf serve --port {port} --host 127.0.0.1",
+    "mode": "playwright",
+    "browser_smoke_plan": "test_plan.md ## Browser smoke plan"
+  },
+  "packaging_strategy": {
+    "type": "self_contained_python_wheel_with_vite_spa",
+    "built_js_css_assets": ["src/uapvf/ui_dist/index.html", "src/uapvf/ui_dist/assets/*", "src/uapvf/ui_dist/brand-mark.svg"],
+    "note": "scripts/sync-ui-dist.sh freezes the tested Vite output into the Python package. A wheel install serves the same React console without Node or a source checkout; server-rendered screens remain the emergency fallback."
+  },
+  "verify": {
+    "tests": "python3 -m pytest tests/ -q",
+    "health": "curl -s http://127.0.0.1:8470/healthz",
+    "readiness": "curl -s http://127.0.0.1:8470/readyz",
+    "deployment_smoke": [
+      "UAPV_CLI_TOKEN=$UAPV_OPERATOR_TOKEN uapvf db init",
+      "UAPV_CLI_TOKEN=$UAPV_OPERATOR_TOKEN uapvf case submit --media tests/fixtures/unexplained.jpg --fields tests/fixtures/fields.json",
+      "UAPV_CLI_TOKEN=$UAPV_OPERATOR_TOKEN uapvf benchmark prereg",
+      "UAPV_CLI_TOKEN=$UAPV_OPERATOR_TOKEN uapvf benchmark run"
+    ]
+  },
+  "state_locations": {
+    "database": "var/uapvf.db",
+    "case_files": "var/cases/<case_id>/",
+    "benchmark": "var/benchmark/",
+    "backups": "var/backup/",
+    "operator_config": ["var/battery_config.yaml", "var/quality_config.json", "var/fiction_prompt_template.txt", "var/fiction_constraints.json"]
+  },
+  "backup_restore": {
+    "backup": "uapvf backup",
+    "restore": "uapvf restore var/backup/<tarball>.tar.gz"
+  },
+  "shutdown": "Send SIGTERM/SIGINT to the `uapvf serve` process (or `uapvf restore` stops it via var/server.pid). In-flight cases reset to queued on next start."
+}

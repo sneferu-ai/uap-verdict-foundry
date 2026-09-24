@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uapvf"
+version = "0.1.0"
+description = "UAP Verdict Foundry - autonomous UAP media analysis with defensible tri-state verdicts and permanently labelled fiction seeds"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "UAP Verdict Foundry Operator" }]
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn>=0.27",
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+  "python-multipart>=0.0.9",
+  "pillow>=10.0",
+  "PyYAML>=6.0",
+  "httpx>=0.26",
+  "numpy>=1.26",
+  "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+# Live-mode only. Mock mode (SNEFERU_MOCK=1) needs none of these.
+# `filetype` is optional at runtime: intake falls back to an internal
+# magic-byte sniffer when it is not installed (see uapvf/intake.py).
+live = [
+  "filetype>=1.2",
+  "skyfield>=1.45",
+  "sgp4>=2.22",
+  "onnxruntime>=1.16",
+  "requests>=2.31",
+]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+uapvf = "uapvf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Operator config templates live inside the package so a wheel install can
+# materialize them into var/ on `uapvf db init` / server start (spec §6/§7,
+# AC-013). var/ itself is runtime state and is never shipped in the wheel.
+[tool.setuptools.package-data]
+uapvf = ["defaults/*", "ui_dist/*", "ui_dist/assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# "tests" must be importable as a top-level path too: test modules do
+# `from conftest import ...`, which fails under pytest's importlib import
+# mode unless the tests dir is on sys.path explicitly.
+pythonpath = ["src", "tests"]

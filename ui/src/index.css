@@ -1,0 +1,199 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Map the closed token layer onto Tailwind v4 utilities. `inline` keeps the
+   raw values living only in tokens.css — utilities compile to var() refs. */
+@theme inline {
+  --color-base: var(--bg-base);
+  --color-raised: var(--bg-elevated);
+  --color-overlay: var(--bg-overlay);
+  --color-hovered: var(--bg-hover);
+  --color-inset: var(--bg-inset);
+
+  --color-ink: var(--fg-primary);
+  --color-ink-2: var(--fg-secondary);
+  --color-ink-3: var(--fg-tertiary);
+  --color-ink-disabled: var(--fg-disabled);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-pressed: var(--accent-pressed);
+  --color-accent-ink: var(--accent-ink);
+
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-surface: var(--brand-surface);
+
+  --color-line: var(--border-subtle);
+  --color-line-2: var(--border-default);
+  --color-line-3: var(--border-strong);
+  --color-focus: var(--border-focus);
+
+  --color-st-run: var(--status-running-text);
+  --color-st-run-tint: var(--status-running-tint);
+  --color-st-ok: var(--status-complete-text);
+  --color-st-ok-tint: var(--status-complete-tint);
+  --color-st-verdict: var(--status-verdict-text);
+  --color-st-verdict-tint: var(--status-verdict-tint);
+  --color-st-bad: var(--status-failed-text);
+  --color-st-bad-tint: var(--status-failed-tint);
+  --color-st-cap: var(--status-capped-text);
+  --color-st-cap-tint: var(--status-capped-tint);
+  --color-st-rerun: var(--status-rerun-text);
+  --color-st-rerun-tint: var(--status-rerun-tint);
+  --color-st-neutral: var(--status-neutral-text);
+  --color-st-neutral-tint: var(--status-neutral-tint);
+
+  --color-danger: var(--danger-fill);
+  --color-danger-hover: var(--danger-fill-hover);
+  --color-danger-ink: var(--danger-ink);
+  --color-quarantine: var(--quarantine-bg);
+  --color-quarantine-ink: var(--quarantine-ink);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-md: var(--text-md);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --shadow-1: var(--shadow-1);
+  --shadow-2: var(--shadow-2);
+  --shadow-3: var(--shadow-3);
+  --shadow-4: var(--shadow-4);
+
+  --default-transition-duration: var(--dur-fast);
+  --default-transition-timing-function: var(--ease-default);
+}
+
+html,
+body {
+  background-color: var(--bg-base);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--line-normal);
+}
+
+/* Mobile body floor 16px (iOS auto-zoom, DESIGN.md §4). */
+@media (max-width: 639px) {
+  html,
+  body {
+    font-size: var(--text-base-mobile);
+  }
+}
+
+/* One consistent focus treatment for every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Route-change entrance: the one slower orientation transition
+   (brand direction). Transform + opacity only. */
+@keyframes uapv-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: uapv-enter var(--dur-slow) var(--ease-emphasized) both;
+}
+
+/* Skeleton shimmer — opacity only (compositor-cheap). */
+@keyframes uapv-shimmer {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton {
+  background-color: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  animation: uapv-shimmer 1.2s var(--ease-default) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .skeleton {
+    animation: none;
+  }
+  .page-enter {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Tabular numerals on every numeric column (DESIGN.md §1 pattern 2). */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Touch hit zones (DESIGN.md §6): visual size stays dense; a transparent
+   ::after pad expands each pointer target to at least --hit-target (44px).
+   Pseudo-element hits register on the owning element, so click/focus
+   behavior is unchanged. */
+.hit-4,
+.hit-6,
+.hit-8 {
+  position: relative;
+}
+.hit-4::after,
+.hit-6::after,
+.hit-8::after {
+  content: "";
+  position: absolute;
+}
+.hit-4::after {
+  inset: calc(-1 * var(--hit-pad-4));
+}
+.hit-6::after {
+  inset: calc(-1 * var(--hit-pad-6));
+}
+.hit-8::after {
+  inset: calc(-1 * var(--hit-pad-8));
+}
+
+/* Skip link: visually hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: var(--z-cmd);
+}
+.skip-link:focus {
+  left: var(--space-2);
+  top: var(--space-2);
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+/* Table horizontal-scroll floors (spec §12.3 — layout literals live here, not in TSX).
+   Applied only on lg+ so mobile never sees a forced horizontal scroll. */
+.table-min-md { min-width: 560px; }
+.table-min-sm { min-width: 480px; }
+.table-min-xs { min-width: 420px; }

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "model_id": "onnxmodelzoo/resnet50-v1-12-int8",
+  "model_output": "ImageNet-1k class index",
+  "confidence_threshold": 0.2,
+  "taxonomy_mapping": {
+    "aircraft": [404, 895],
+    "bird": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    "insect": [300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326]
+  },
+  "index_basis": "zero-based",
+  "source_labels": "ONNX Model Zoo validated/vision/classification/synset.txt",
+  "mapping_policy": "Only explicit ImageNet airplane, bird, and insect synsets are mapped; every other output abstains."
+}

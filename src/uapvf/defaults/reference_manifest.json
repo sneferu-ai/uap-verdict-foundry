@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "description": "DORMANT Phase 2 controlling-source manifest (round 5: no longer gates intake — the strict-by-default intake gate was unspec'd and has been removed; spec §7 clean installs submit cases with no reference configuration). Entries can be fetched and hash-attested by `uapvf references fetch` for informational status reporting (`uapvf references status`, the report's phase2.references block, and the uapvf_reference_integrity metric). sha256 null = attested on first verified pull (recorded in references/attestations.json); the manifest itself is never rewritten.",
+  "references": [
+    {
+      "name": "classification_taxonomy.txt",
+      "source_path": "/references/classification_taxonomy.txt",
+      "sha256": null,
+      "purpose": "normative mundane-classification taxonomy consumed by the battery"
+    },
+    {
+      "name": "report_boundary_contract.txt",
+      "source_path": "/references/report_boundary_contract.txt",
+      "sha256": null,
+      "purpose": "evidence/interpretation boundary and disclaimer contract for exported reports"
+    },
+    {
+      "name": "non_evidence_label_contract.txt",
+      "source_path": "/references/non_evidence_label_contract.txt",
+      "sha256": null,
+      "purpose": "permanent non-evidence label contract for fiction and story assets"
+    }
+  ]
+}

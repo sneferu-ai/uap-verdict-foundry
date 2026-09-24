@@ -1,0 +1,239 @@
+[
+ {
+  "case_file": "aircraft1.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.05,
+   "location_text": "Fixture site",
+   "longitude": -118.24,
+   "observed_at": "2026-01-15T20:30:00+00:00",
+   "shape": "light",
+   "viewing_direction": "90,45",
+   "weather": "clear"
+  },
+  "label_source": "adsb_confirmed",
+  "labels": {
+   "aircraft": "positive",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "mundane_identified",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "aircraft2.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.06,
+   "location_text": "Fixture site",
+   "longitude": -118.25,
+   "observed_at": "2026-01-15T20:31:00+00:00",
+   "shape": "light",
+   "viewing_direction": "270,45",
+   "weather": "clear"
+  },
+  "label_source": "adsb_confirmed",
+  "labels": {
+   "aircraft": "positive",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "mundane_identified",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "satellite1.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.2,
+   "location_text": "Fixture site",
+   "longitude": -118.1,
+   "observed_at": "2026-01-15T20:31:00+00:00",
+   "shape": "light",
+   "viewing_direction": "180,45",
+   "weather": "clear"
+  },
+  "label_source": "satellite_confirmed",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "mundane_identified",
+   "satellites": "positive"
+  }
+ },
+ {
+  "case_file": "astro1.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.3,
+   "location_text": "Fixture site",
+   "longitude": -117.9,
+   "observed_at": "2026-01-15T20:45:00+00:00",
+   "shape": "light",
+   "viewing_direction": "45,60",
+   "weather": "clear"
+  },
+  "label_source": "astronomical_confirmed",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "positive",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "mundane_identified",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "nmm1.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.5,
+   "location_text": "Fixture site",
+   "longitude": -118.0,
+   "observed_at": "2026-01-15T21:15:00+00:00",
+   "shape": "light",
+   "viewing_direction": "90,45",
+   "weather": "clear"
+  },
+  "label_source": "synthetic",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "no_mundane_match",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "nmm2.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.6,
+   "location_text": "Fixture site",
+   "longitude": -117.8,
+   "observed_at": "2026-01-15T21:20:00+00:00",
+   "shape": "light",
+   "viewing_direction": "90,45",
+   "weather": "clear"
+  },
+  "label_source": "synthetic",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "no_mundane_match",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "nmm3.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.4,
+   "location_text": "Fixture site",
+   "longitude": -118.3,
+   "observed_at": "2026-01-15T21:25:00+00:00",
+   "shape": "light",
+   "viewing_direction": "270,30",
+   "weather": "clear"
+  },
+  "label_source": "synthetic",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [],
+   "lens_artifacts": "negative",
+   "overall": "no_mundane_match",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "insuf1.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.5,
+   "location_text": "Fixture site",
+   "longitude": -118.0,
+   "observed_at": "2026-01-15T21:30:00+00:00",
+   "shape": "light",
+   "viewing_direction": "90,45",
+   "weather": "clear"
+  },
+  "label_source": "synthetic",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [
+    "lens_artifacts"
+   ],
+   "lens_artifacts": "negative",
+   "overall": "insufficient_data",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "insuf2.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.5,
+   "location_text": "Fixture site",
+   "longitude": -118.0,
+   "observed_at": "2026-01-15T21:35:00+00:00",
+   "shape": "light",
+   "weather": "clear"
+  },
+  "label_source": "synthetic",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [
+    "satellites",
+    "astronomical"
+   ],
+   "lens_artifacts": "negative",
+   "overall": "insufficient_data",
+   "satellites": "negative"
+  }
+ },
+ {
+  "case_file": "insuf3.jpg",
+  "intake": {
+   "behavior_notes": "Benchmark seed fixture.",
+   "count": 1,
+   "latitude": 34.5,
+   "location_text": "Fixture site",
+   "longitude": -118.0,
+   "observed_at": "2026-01-15T21:40:00+00:00",
+   "shape": "light",
+   "weather": "clear"
+  },
+  "label_source": "operator_manual",
+  "labels": {
+   "aircraft": "negative",
+   "astronomical": "negative",
+   "expected_insufficient": [
+    "lens_artifacts",
+    "satellites",
+    "astronomical"
+   ],
+   "lens_artifacts": "negative",
+   "overall": "insufficient_data",
+   "satellites": "negative"
+  }
+ }
+]

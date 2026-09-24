@@ -1,0 +1,18 @@
+You are writing a SPECULATIVE FICTION seed for an unresolved observation case.
+
+Case metadata:
+{case_metadata}
+
+Write 3 short narrative paragraphs inspired by this observation. Ground them
+in the recorded time, place, and appearance, but let the imagination carry
+the story beyond what the evidence can say.
+
+HARD CONSTRAINTS (violation makes the output unusable):
+- Do not assert extraterrestrial origin or non-human intelligence. Wonder and
+  ambiguity only; the mystery must remain a question, never an answer.
+- Do not present the narrative as fact, evidence, or analysis.
+- Do not reference real persons by name beyond the generic witnesses.
+- Keep each paragraph at least 40 characters of substantive prose.
+- Plain prose only: no headings, lists, code blocks, or blockquotes.
+
+Return ONLY a JSON object: {"paragraphs": ["...", "...", "..."]}

@@ -1,0 +1,73 @@
+{
+  "version": "1.1.0",
+  "claim_classification_inconsistencies": [
+    {"claim": "luminance_profile_consistent_with_known_object", "inconsistent_with": ["astronomical"]},
+    {"claim": "luminance_gradient_anomalous", "inconsistent_with": ["satellite", "balloon"]},
+    {"claim": "high_luminance_ratio", "inconsistent_with": ["lens_artifact"]},
+    {"claim": "spectral_peak_detected", "inconsistent_with": ["bird", "insect"]},
+    {"claim": "spectral_entropy_anomalous", "inconsistent_with": ["balloon", "meteor"]},
+    {"claim": "frequency_harmonic_pattern", "inconsistent_with": ["meteor", "astronomical", "bird"]},
+    {"claim": "geometric_contour_matched", "inconsistent_with": ["astronomical"]},
+    {"claim": "perspective_consistent_with_range", "inconsistent_with": ["astronomical", "satellite"]},
+    {"claim": "shape_symmetry_detected", "inconsistent_with": ["meteor", "insect"]},
+    {"claim": "exif_device_identified", "inconsistent_with": []},
+    {"claim": "timestamp_metadata_consistent", "inconsistent_with": []},
+    {"claim": "file_structure_anomaly", "inconsistent_with": ["aircraft", "satellite", "balloon", "drone", "bird", "insect", "meteor", "astronomical"]},
+    {"claim": "ballistic_trajectory_detected", "inconsistent_with": ["bird", "insect", "drone", "balloon"]},
+    {"claim": "hover_behavior_detected", "inconsistent_with": ["meteor", "astronomical", "satellite"]},
+    {"claim": "steady_trajectory_detected", "inconsistent_with": ["insect", "bird"]},
+    {"claim": "cnn_classification_confident", "inconsistent_with": []},
+    {"claim": "cnn_feature_pattern_matched", "inconsistent_with": []},
+    {"claim": "audio_spectral_signature_detected", "inconsistent_with": ["astronomical", "meteor"]},
+    {"claim": "audio_rotor_signature_detected", "inconsistent_with": ["bird", "meteor", "astronomical", "balloon"]},
+    {"claim": "audio_environmental_match", "inconsistent_with": []}
+  ],
+  "structural_inconsistencies": [
+    {"claim_a": "point_source", "claim_b": "extended_source", "reason": "object cannot be both unresolved and spatially extended"},
+    {"claim_a": "sharp_boundary", "claim_b": "diffuse_boundary", "reason": "object cannot have both sharp and diffuse edges"},
+    {"claim_a": "symmetric_form", "claim_b": "asymmetric_form", "reason": "object cannot be both symmetric and asymmetric"}
+  ],
+  "specific_claim_contradictions": [
+    {"lineage": "l5", "claim_a": "ballistic_trajectory_detected", "claim_b": "hover_behavior_detected", "reason": "cannot be both ballistic and hovering"},
+    {"lineage": "l5", "claim_a": "ballistic_trajectory_detected", "claim_b": "steady_trajectory_detected", "reason": "ballistic is not steady"},
+    {"lineage": "l7", "claim_a": "audio_rotor_signature_detected", "claim_b": "audio_environmental_match", "reason": "rotor signature is not environmental"},
+    {"lineage": "l4", "claim_a": "exif_device_identified", "claim_b": "file_structure_anomaly", "reason": "identified device implies normal structure"}
+  ],
+  "defense_resolutions": [
+    {
+      "challenged_claim": "hover_behavior_detected",
+      "defense_claim": "velocity_profile",
+      "defense_supports_challenged_classification": ["drone"],
+      "defense_undermines_challenger_classification": ["meteor", "astronomical", "satellite"],
+      "reason": "hover behavior with identifiable velocity profile supports drone over meteor/astronomical/satellite"
+    },
+    {
+      "challenged_claim": "ballistic_trajectory_detected",
+      "defense_claim": "temporal_consistency",
+      "defense_supports_challenged_classification": ["meteor"],
+      "defense_undermines_challenger_classification": ["bird", "insect", "drone", "balloon"],
+      "reason": "ballistic trajectory with temporal consistency supports meteor over biological/artificial"
+    },
+    {
+      "challenged_claim": "audio_rotor_signature_detected",
+      "defense_claim": "frequency_signature",
+      "defense_supports_challenged_classification": ["drone"],
+      "defense_undermines_challenger_classification": ["bird", "meteor", "astronomical", "balloon"],
+      "reason": "rotor audio with distinctive frequency signature supports drone over alternatives"
+    },
+    {
+      "challenged_claim": "spectral_peak_detected",
+      "defense_claim": "anomalous_signature",
+      "defense_supports_challenged_classification": ["satellite"],
+      "defense_undermines_challenger_classification": ["bird", "insect"],
+      "reason": "spectral peak with anomalous signature supports satellite over biological"
+    },
+    {
+      "challenged_claim": "luminance_gradient_anomalous",
+      "defense_claim": "high_luminance_ratio",
+      "defense_supports_challenged_classification": ["aircraft"],
+      "defense_undermines_challenger_classification": ["satellite", "balloon"],
+      "reason": "anomalous luminance gradient with high luminance ratio supports aircraft over orbital/floating"
+    }
+  ]
+}

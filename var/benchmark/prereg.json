@@ -1,0 +1,6 @@
+{
+ "max_false_no_mundane_match_rate": 0.15,
+ "min_insufficient_detection_rate": 0.8,
+ "min_per_category_recall": 0.7,
+ "prereg_hash": "c9bb4cde1d18ed250aea502f3e2f8ea9ea3c23d3624234250c729989077ea1c5"
+}

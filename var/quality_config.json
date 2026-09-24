@@ -1,0 +1,16 @@
+{
+  "vision_quality_floor": 0.35,
+  "calibration_source": "operator_tuned_v1",
+  "calibration_date": "2026-01-15",
+  "calibration_basis": "operator judgment on 20 sample images/videos; threshold set to separate clearly usable media from heavily degraded media",
+  "components": {
+    "resolution_weight": 0.40,
+    "compression_weight": 0.35,
+    "exif_weight": 0.25,
+    "frame_rate_weight": 0.30,
+    "bitrate_weight": 0.30,
+    "resolution_reference_pixels": 1920,
+    "bitrate_reference_bps": 5000000,
+    "frame_rate_reference_fps": 30
+  }
+}

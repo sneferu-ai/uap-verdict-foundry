@@ -1,0 +1,255 @@
+/* ==========================================================================
+   tokens.css — the CLOSED token layer for the UAP Verdict Foundry console.
+
+   Every raw hex, px, and duration in the UI lives in this file and nowhere
+   else (DESIGN.md §10 audit). Components claim tokens by name.
+
+   Brand source: BRAND_IDENTITY.md (launch-frozen). The six --brand-* values
+   are mandatory inputs, preserved verbatim. Dark is the shipped default
+   (the brand direction); light is designed alongside, not retrofitted.
+   WCAG AA verified pairs are documented in DESIGN.md §3.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand identity (verbatim from BRAND_IDENTITY.md) ----------------- */
+  --brand-background: #1c1e25;
+  --brand-foreground: #abdfb9;
+  --brand-muted: #7a9d87;
+  --brand-primary: #abdfb9;
+  --brand-secondary: #707172;
+  --brand-surface: #323539;
+
+  /* ---- Color — dark theme (default) -------------------------------------- */
+  --bg-base: var(--brand-background);
+  --bg-elevated: #24272f;
+  --bg-overlay: #2b2f38;
+  --bg-hover: #282c35;
+  --bg-inset: #191b21;
+
+  --fg-primary: #e9ede6;
+  --fg-secondary: #b7c0b4;
+  --fg-tertiary: #8b9390;
+  --fg-disabled: #5c6360;
+
+  --accent: var(--brand-primary);
+  --accent-hover: #c0e9cb;
+  --accent-pressed: #8fcda0;
+  --accent-ink: #14251a;
+
+  --border-subtle: #2a2e37;
+  --border-default: #383d47;
+  --border-strong: #4a505c;
+  --border-focus: var(--brand-primary);
+
+  /* Status families (spec §6.3 hue families remapped for dark AA).
+     Each family: -text (>=4.5:1 on bg-base) + -tint (~14% alpha wash). */
+  --status-running-text: #e8c37a;
+  --status-running-tint: rgba(232, 195, 122, 0.14);
+  --status-complete-text: #86d9a8;
+  --status-complete-tint: rgba(134, 217, 168, 0.14);
+  --status-verdict-text: #a9b4ec;
+  --status-verdict-tint: rgba(169, 180, 236, 0.14);
+  --status-failed-text: #efa3ae;
+  --status-failed-tint: rgba(239, 163, 174, 0.14);
+  --status-capped-text: #edb083;
+  --status-capped-tint: rgba(237, 176, 131, 0.14);
+  --status-rerun-text: #c5adea;
+  --status-rerun-tint: rgba(197, 173, 234, 0.14);
+  --status-neutral-text: #9aa1a8;
+  --status-neutral-tint: rgba(154, 161, 168, 0.14);
+
+  /* Danger surface (the only red fill in the product — delete actions). */
+  --danger-fill: #8c2f3f;
+  --danger-fill-hover: #a03849;
+  --danger-ink: #f6d8dd;
+
+  /* Fiction quarantine banner (spec §9.7: bg-rose-700 family, AA white). */
+  --quarantine-bg: #9f2938;
+  --quarantine-ink: #fdeef0;
+
+  color-scheme: dark;
+}
+
+/* ---- Light theme (operator preference; same roles, designed together) -- */
+[data-theme="light"] {
+  --bg-base: #f6f7f5;
+  --bg-elevated: #ffffff;
+  --bg-overlay: #f0f2ef;
+  --bg-hover: #edefea;
+  --bg-inset: #eef0ec;
+
+  --fg-primary: #20242b;
+  --fg-secondary: #454b54;
+  --fg-tertiary: #6a7280;
+  --fg-disabled: #9ca3af;
+
+  --accent: #2f7a4d;
+  --accent-hover: #276741;
+  --accent-pressed: #1f5334;
+  --accent-ink: #f4faf5;
+
+  --brand-muted: #5b7d67;
+  --brand-secondary: #75787b;
+  --brand-surface: #e7e9e4;
+
+  --border-subtle: #e3e6e0;
+  --border-default: #d3d7d0;
+  --border-strong: #aeb4ac;
+  --border-focus: #2f7a4d;
+
+  --status-running-text: #92400e;
+  --status-running-tint: #fdf3df;
+  --status-complete-text: #065f46;
+  --status-complete-tint: #e4f5ec;
+  --status-verdict-text: #3730a3;
+  --status-verdict-tint: #e8e9fa;
+  --status-failed-text: #9f1239;
+  --status-failed-tint: #fce8ec;
+  --status-capped-text: #9a3412;
+  --status-capped-tint: #fdebdd;
+  --status-rerun-text: #5b21b6;
+  --status-rerun-tint: #efe8fa;
+  --status-neutral-text: #475569;
+  --status-neutral-tint: #e9ecef;
+
+  --danger-fill: #9f1239;
+  --danger-fill-hover: #881337;
+  --danger-ink: #fdf2f4;
+
+  --quarantine-bg: #9f2938;
+  --quarantine-ink: #fdeef0;
+
+  color-scheme: light;
+}
+
+:root {
+  /* ---- Typography --------------------------------------------------------- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", system-ui,
+    sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Modular scale, ratio 1.25 (DESIGN.md §4). */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-base-mobile: 16px; /* iOS auto-zoom floor */
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+
+  --line-tight: 1.2;
+  --line-snug: 1.35;
+  --line-normal: 1.5;
+  --line-relaxed: 1.65;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-caps: 0.06em;
+
+  /* ---- Spacing (8pt scale, 4pt half-steps) -------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Hit zones (touch targets >= 44px; visuals stay dense, the pad is
+         a ::after expansion — DESIGN.md §6 / skill Category 5) ------------- */
+  --hit-target: 44px;
+  --hit-pad-4: 4px; /* 36px visual (buttons, inputs) -> 44px target */
+  --hit-pad-6: 6px; /* 32px visual (nav rows, row actions) -> 44px target */
+  --hit-pad-8: 8px; /* 28px visual (btn-sm) -> 44px target */
+
+  /* ---- Modal (DESIGN.md §6: ConfirmDialog panel width) ------------------- */
+  --modal-max-w: 480px;
+
+  /* ---- Bounded evidence/content surfaces (spec §6.8) -------------------- */
+  --stamp-max-h: 400px;
+  --content-max-h: 70vh;
+
+  /* ---- Shape -------------------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-pill: 999px;
+  --radius-full: 9999px;
+
+  /* ---- Elevation (one scale; shadows live on the modal layer only) ------- */
+  --blur-overlay: 4px;
+  --overlay-backdrop: rgba(12, 13, 17, 0.6);
+
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(10, 11, 14, 0.35);
+  --shadow-2: 0 2px 8px rgba(10, 11, 14, 0.4);
+  --shadow-3: 0 8px 32px rgba(8, 9, 12, 0.55);
+  --shadow-4: 0 12px 48px rgba(8, 9, 12, 0.65);
+
+  /* ---- Motion (brand: near-instant state changes, one slower orientation
+         transition — DESIGN.md §7 / Brand direction implementation) --------- */
+  --dur-instant: 50ms;
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---- Z-index (single source of truth) ----------------------------------- */
+  --z-dropdown: 30;
+  --z-sticky: 40;
+  --z-modal-bg: 50;
+  --z-modal: 60;
+  --z-cmd: 70;
+  --z-toast: 80;
+}
+
+/* ---- Fonts (self-hosted OFL woff2 — CSP font-src 'self' holds) ----------- */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-latin-wght.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("./assets/fonts/ibm-plex-sans-latin-wght.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/ibm-plex-mono-latin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/ibm-plex-mono-latin-500.woff2") format("woff2");
+}
+
+/* ---- Motion preferences --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

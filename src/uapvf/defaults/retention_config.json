@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "ttl_days": {
+    "original_media": 365,
+    "normalized_media": 365,
+    "forensic_reports": 2555,
+    "report_sidecars": 2555,
+    "lineage_outputs": 2555,
+    "battery_results": 2555,
+    "xenoscience_outputs": 730,
+    "story_assets": 730,
+    "delivery_packages": 90,
+    "delivery_tokens": 30,
+    "product_backups": 30
+  },
+  "require_explicit_policy": true
+}

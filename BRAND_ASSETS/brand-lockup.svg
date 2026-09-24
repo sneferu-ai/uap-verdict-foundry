@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" role="img" aria-labelledby="title desc">
+  <title id="title">Verdict Foundry</title>
+  <desc id="desc">Evidence laboratory and story foundry.</desc>
+  <rect width="760" height="200" rx="28" fill="#1C1E25"/>
+  <g transform="translate(10,-25) scale(.82)">
+    <path d="M-12 70H62c30 0 36 18 55 42l19 24" fill="none" stroke="#78DCE8" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68-12v50c0 29 19 41 42 60l28 23M145 132c22 1 31 15 46 35l77 101" fill="none" stroke="#ABDFB9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="140" cy="128" r="43" fill="#1C1E25" stroke="#E9EDE6" stroke-width="8"/>
+    <path d="M105 111h70l-24 42h-22z" fill="#E9EDE6"/><circle cx="140" cy="128" r="10" fill="#1C1E25"/>
+  </g>
+  <text x="245" y="91" fill="#E9EDE6" font-family="Georgia, serif" font-size="50" font-weight="700">Verdict Foundry</text>
+  <text x="248" y="132" fill="#ABDFB9" font-family="ui-monospace, monospace" font-size="17" letter-spacing="3">EVIDENCE LAB / STORY BOUNDARY</text>
+</svg>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1C1E25" />
+    <link rel="icon" href="/ui/app-icon.svg" type="image/svg+xml" />
+    <title>UAP Verdict Foundry — Operator Console</title>
+    <meta
+      name="description"
+      content="Operator console for the UAP Verdict Foundry. No output of this service claims extraterrestrial origin."
+    />
+    <script type="module" crossorigin src="/ui/assets/index-HIqlOTqk.js"></script>
+    <link rel="stylesheet" crossorigin href="/ui/assets/index-CfMHiRpa.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Dev bootstrap (spec §3.10). In production the FastAPI SPA fallback
+         replaces the JSON payload of this exact element with the live
+         session state: {authenticated, csrf_token, mode}. -->
+    <script id="uapv-bootstrap" type="application/json">
+      {"authenticated":false,"csrf_token":null,"mode":"mock"}
+    </script>
+  </body>
+</html>

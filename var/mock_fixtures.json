@@ -1,0 +1,51 @@
+{
+  "adsb": {
+    "source_id": "adsb_mock_fixture",
+    "coverage": {
+      "lat_min": 33.0,
+      "lat_max": 35.5,
+      "lon_min": -119.5,
+      "lon_max": -116.5
+    },
+    "tracks": [
+      {
+        "callsign": "MOCK123",
+        "latitude": 34.05,
+        "longitude": -118.24,
+        "observed_at": "2026-01-15T20:30:00+00:00",
+        "altitude_m": 10668
+      },
+      {
+        "callsign": "MOCK456",
+        "latitude": 34.06,
+        "longitude": -118.25,
+        "observed_at": "2026-01-15T20:31:00+00:00",
+        "altitude_m": 9754
+      }
+    ],
+    "match_window_minutes": 5,
+    "match_radius_km": 2.0
+  },
+  "satellites": {
+    "source_id": "satellite_mock_fixture",
+    "coverage": {
+      "lat_min": 33.0,
+      "lat_max": 35.5,
+      "lon_min": -119.5,
+      "lon_max": -116.5
+    },
+    "tle_epoch": "2026-01-14T00:00:00+00:00",
+    "passes": [
+      {
+        "satellite": "ISS-MOCK (ZARYA)",
+        "culmination_at": "2026-01-15T20:31:00+00:00",
+        "azimuth_deg": 180.0,
+        "elevation_deg": 45.0
+      }
+    ],
+    "match_window_minutes": 5,
+    "match_angle_deg": 5.0,
+    "max_tle_age_days": 7,
+    "min_elevation_deg": 10.0
+  }
+}

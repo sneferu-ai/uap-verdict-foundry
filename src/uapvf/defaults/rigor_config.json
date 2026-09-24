@@ -1,0 +1,21 @@
+{
+  "agreement_metric": "classification_gated_refutation_consistent_concordance_with_evidence_overlap",
+  "agreement_fraction_threshold": 0.5,
+  "variance_statistic": "population_variance",
+  "variance_threshold": 0.15,
+  "threshold_unit": "absolute",
+  "min_plurality_count": 4,
+  "independence_statistic": "cohens_kappa",
+  "independence_threshold": 0.2,
+  "independence_bootstrap_samples": 10000,
+  "independence_ci_level": 0.995,
+  "independence_min_comparable_items": 100,
+  "refutation_rules_path": "src/uapvf/defaults/refutation_rules.json",
+  "evidence_vocabulary_path": "src/uapvf/defaults/evidence_vocabulary.json",
+  "calibration_accuracy_threshold": 0.6,
+  "calibration_min_comparable": 80,
+  "rigor_conditions": {
+    "live": [1, 2, 3, 4, 5, 6],
+    "mock": "blocked"
+  }
+}

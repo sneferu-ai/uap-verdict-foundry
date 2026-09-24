@@ -1,0 +1,42 @@
+# UAP Verdict Foundry — mundane-explanation battery configuration (FR-006).
+# MVP default battery: exactly FOUR categories per FR-006 / spec §1 —
+# aircraft, satellites, lens artifacts (lens_artifact + sensor_artifact
+# classifications), and astronomical objects via archive cross-match.
+# Drones, birds, weather, meteors, and balloons are DELIBERATELY excluded
+# (spec §1 resolution 13): a lineage classification naming one of those
+# untested mundane categories triggers the uncovered-mundane amendment to
+# insufficient_data (§1 verdict rule amendment, AC-033), which is exactly
+# what wiring them into the battery would silently defeat. Adding
+# categories later is an additive plugin change (§5), never a default.
+version: 1
+categories:
+  - name: aircraft
+    adapter: uapvf.adapters.adsb_adapter.AdsbAdapter
+    timeout_s: 10
+    params:
+      match_window_minutes: 5
+      match_radius_km: 2.0
+  - name: satellites
+    adapter: uapvf.adapters.satellite_adapter.SatelliteAdapter
+    timeout_s: 30
+    params:
+      match_window_minutes: 5
+      match_angle_deg: 5.0
+      max_tle_age_days: 7
+  - name: lens_artifacts
+    adapter: uapvf.adapters.lineage_adapter.LineageAdapter
+    timeout_s: 10
+    params:
+      min_lineages: 2
+      artifact_group_fraction_threshold: 0.7
+  - name: astronomical
+    adapter: uapvf.adapters.archive_adapter.ArchiveAdapter
+    timeout_s: 5
+    params:
+      match_angle_deg: 0.5
+      max_magnitude: 6.0
+      # Blank falls back to ARCHIVE_MIRROR_PATH from settings (the
+      # ${UAPV_ARCHIVE_MIRROR_PATH} substitution below resolves to "" when
+      # the env var is unset, which triggers that settings fallback); the
+      # benchmark runner points this at its seed catalog fixture.
+      mirror_path: "${UAPV_ARCHIVE_MIRROR_PATH}"

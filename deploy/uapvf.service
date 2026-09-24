@@ -1,0 +1,34 @@
+[Unit]
+Description=Verdict Foundry forensic case service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=uapvf
+Group=uapvf
+WorkingDirectory=/opt/verdict-foundry
+EnvironmentFile=/etc/uapvf/uapvf.env
+Environment=UAPV_VAR_DIR=/var/lib/uapvf
+ExecStart=/opt/verdict-foundry/venv/bin/uapvf serve --host 127.0.0.1 --port 8470
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+StateDirectory=uapvf
+LogsDirectory=uapvf
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/uapvf
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target
